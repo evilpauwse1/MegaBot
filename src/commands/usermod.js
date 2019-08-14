@@ -32,6 +32,8 @@ module.exports = {
           const xp = require('../features/exp')
           if (isNaN(parseInt(chunks[2]))) return msg.channel.createMessage('3rd argument must be a number')
           const reason = chunks.slice(3).join(' ')
+          reason = reason.replace("|","");
+          reason = reason.trim();
           if (reason.length < 1) return msg.channel.createMessage('Please provide a reason')
           xp.applyEXP(chunks[0], parseInt(chunks[2]), reason)
           return msg.channel.createMessage(`EXP modification applied, this user now has ${userinfo.properties.exp + parseInt(chunks[2])} EXP`)
